@@ -1,0 +1,41 @@
+{
+  "name": "vaxplan",
+  "version": "0.0.1",
+  "description": "Vaccine evaluation and forecasting engine",
+  "main": "./dist/lib/app.js",
+  "repository": {
+    "private": "true",
+    "type": "git",
+    "url": "git://github.com/xagronaut/vaxplan"
+  },
+  "keywords": [
+    "immunization",
+    "decision support",
+    "rule engine",
+    "decision engine"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "buildweb": "rm -rf distwww && tsc ./lib/*.ts --outDir distwww --outFile distwww/lib/app.js --module amd --target es5 && tsc ./test/*.ts --outDir distwww --target es5",
+    "prepublish": "typings install && npm run build",
+    "test": "jasmine-node ./dist/test",
+    "tsc": "tsc",
+    "typings": "typings",
+    "coverage": "istanbul cover node_modules/jasmine/bin/jasmine.js test/**.js"
+  },
+  "author": "Jeffrey A. Miller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xagronaut/vaxplan/issues"
+  },
+  "dependencies": {
+    "moment": "^2.13.0",
+    "require": "^2.4.20",
+    "requirejs": "^2.2.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "2.4.1",
+    "jasmine-node": "1.14.5"
+  }
+}

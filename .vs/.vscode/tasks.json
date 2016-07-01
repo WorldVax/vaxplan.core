@@ -1,0 +1,14 @@
+{
+    "version": "0.1.0",
+    "command": "tsc",
+    "isShellCommand": true,
+    "showOutput": "silent",
+    "args": [
+        "--target", "ES5",
+        "--outDir", "dist",
+        "--module", "commonjs",
+        "--sourceMap",
+        "--watch"
+    ],
+    "problemMatcher": "$tsc"
+}
