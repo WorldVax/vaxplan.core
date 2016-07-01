@@ -1,6 +1,6 @@
-# {{{{fill this in with modulename}}}}
+# vaxplan.core
 
-This module {{{{fill in stuff it does}}}}
+This is the main module in the vaxplan vaccine evaluation and forecasting engine.
 
 ## Install
 
@@ -12,45 +12,14 @@ npm install
 
 ```bash
 npm install
-npm install istanbul -g
 npm test
-npm run coverage
-```
-
-
-## Default Configuration
-
-The following default options apply to the module configuration.
-
-{{{{fill in example table}}}}
-
-```javascript
-var MyComponent = require("{{{{fill in modulename}}}}");
-var myComp = new MyComponent(); // default
-myComp.doSomething(0, 'Second parameter');
-```
-
-## Examples
-
-## Customized Usage
-
-Alternatively you can add options to the {{{{fill in modulename}}}} constructor for {{{{fill in example parameter names}}}} parameters.
-
-```javascript
-var MyComponent = require("{{{{fill in module name}}}}");
-var myComp = new MyComponent({
-    option1: "value for option 1",
-    setOfOptions: {specialOptionA:"value for special option A"},
-    someFeatureEnabled: false
-    });
-myComp.doSomething("value 1", 3000); // {{{{fill in description of action}}}}
 ```
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Jeffrey A. Miller
+Copyright (c) 2016 WorldVax.org
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
