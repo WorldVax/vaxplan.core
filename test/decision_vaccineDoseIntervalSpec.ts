@@ -1,11 +1,11 @@
 /// <reference path="../typings/index.d.ts" />
 
-import Cdsi = require("../lib/cdsi");
+import Vaxplan = require("../lib/planner");
 
 describe("The Vaccine Dose Interval decision", () => {
     it("should report false when...", () => {
-        var decision = new Cdsi.Decision_VaccineDoseIntervalValid();
-        let context: Cdsi.IDecisionContext_VaccineDoseIntervalValid;
+        var decision = new Vaxplan.Decision_VaccineDoseIntervalValid();
+        let context: Vaxplan.IDecisionContext_VaccineDoseIntervalValid;
         context = {
             administeredDate: new Date("2016-05-01"),
             absoluteMinimumIntervalDate: new Date("2016-05-10"),
@@ -17,15 +17,15 @@ describe("The Vaccine Dose Interval decision", () => {
             targetDoseNumber: 1
         };
 
-        let result: Cdsi.IDecisionOutcome_VaccineDoseIntervalValid;
+        let result: Vaxplan.IDecisionOutcome_VaccineDoseIntervalValid;
         result = decision.decide(context);
         expect(result).toBeDefined();
         expect(result.doseIntervalIsValid).toEqual(false);
     });
 
     it("should report true when no rules are broken", () => {
-        var decision = new Cdsi.Decision_VaccineDoseIntervalValid();
-        let context: Cdsi.IDecisionContext_VaccineDoseIntervalValid;
+        var decision = new Vaxplan.Decision_VaccineDoseIntervalValid();
+        let context: Vaxplan.IDecisionContext_VaccineDoseIntervalValid;
         context = {
             administeredDate: new Date("2016-05-01"),
             absoluteMinimumIntervalDate: new Date("2016-05-10"),
@@ -37,7 +37,7 @@ describe("The Vaccine Dose Interval decision", () => {
             targetDoseNumber: 1
         };
 
-        let result: Cdsi.IDecisionOutcome_VaccineDoseIntervalValid;
+        let result: Vaxplan.IDecisionOutcome_VaccineDoseIntervalValid;
         result = decision.decide(context);
         expect(result).toBeDefined();
         expect(result.doseIntervalIsValid).toEqual(true);

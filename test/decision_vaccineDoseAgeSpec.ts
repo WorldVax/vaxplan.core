@@ -1,11 +1,11 @@
 /// <reference path="../typings/index.d.ts" />
 
-import Cdsi = require("../lib/cdsi");
+import Vaxplan = require("../lib/planner");
 
 describe("The Can Evaluate Administered Dose decision", () => {
     it("should report false when...", () => {
-        var decision = new Cdsi.Decision_VaccineDoseAgeValid();
-        let context: Cdsi.IDecisionContext_VaccineDoseAgeValid;
+        var decision = new Vaxplan.Decision_VaccineDoseAgeValid();
+        let context: Vaxplan.IDecisionContext_VaccineDoseAgeValid;
         context = {
             administeredDate: new Date("2016-05-01"),
             absoluteMinimumAgeDate: null,
@@ -15,15 +15,15 @@ describe("The Can Evaluate Administered Dose decision", () => {
             targetDoseNumber: null
         };
 
-        let result: Cdsi.IDecisionOutcome_VaccineDoseAgeValid;
+        let result: Vaxplan.IDecisionOutcome_VaccineDoseAgeValid;
         result = decision.decide(context);
         expect(result).toBeDefined();
         expect(result.doseAgeIsValid).toEqual(false);
     });
 
     it("should report true when no rules are broken", () => {
-        var decision = new Cdsi.Decision_VaccineDoseAgeValid();
-        let context: Cdsi.IDecisionContext_VaccineDoseAgeValid;
+        var decision = new Vaxplan.Decision_VaccineDoseAgeValid();
+        let context: Vaxplan.IDecisionContext_VaccineDoseAgeValid;
         context = {
             administeredDate: new Date("2016-05-01"),
             absoluteMinimumAgeDate: null,
@@ -33,7 +33,7 @@ describe("The Can Evaluate Administered Dose decision", () => {
             targetDoseNumber: null
         };
 
-        let result: Cdsi.IDecisionOutcome_VaccineDoseAgeValid;
+        let result: Vaxplan.IDecisionOutcome_VaccineDoseAgeValid;
         result = decision.decide(context);
         expect(result).toBeDefined();
         expect(result.doseAgeIsValid).toEqual(true);
