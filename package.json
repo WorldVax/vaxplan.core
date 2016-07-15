@@ -1,12 +1,12 @@
 {
-  "name": "vaxplan",
+  "name": "vaxplan.core",
   "version": "0.0.1",
   "description": "Vaccine evaluation and forecasting engine",
   "main": "./dist/lib/app.js",
   "repository": {
-    "private": "true",
+    "private": "false",
     "type": "git",
-    "url": "git://github.com/xagronaut/vaxplan"
+    "url": "git://github.com/worldvax/vaxplan.core"
   },
   "keywords": [
     "immunization",
