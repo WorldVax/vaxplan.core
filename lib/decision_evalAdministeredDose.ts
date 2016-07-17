@@ -15,7 +15,7 @@ export interface IDecisionOutcome_AdministeredDoseCanBeEvaluated {
 }
 
 export class Decision_CanEvaluateAdministeredDose implements Decider.IDecision<IDecisionContext_AdministeredDoseCanBeEvaluated, IDecisionOutcome_AdministeredDoseCanBeEvaluated>  {
-	label : string = "Can this administered dose be evaluated?";
+	label = "Can this administered dose be evaluated?";
 
 	decide(context: IDecisionContext_AdministeredDoseCanBeEvaluated) {
 		console.log(this.label);
@@ -32,10 +32,14 @@ export class Decision_CanEvaluateAdministeredDose implements Decider.IDecision<I
 		});
 
 		var rules = ruleBuilder.rules([
-			[facts.DOSE_CONDITION_EXISTS, () => { return { canBeEvaluated: false }; } ],
-			[facts.LOT_IS_EXPIRED, () => { return { canBeEvaluated: false }; } ],
-			[facts.DOSE_CONDITION_EXISTS.not(), facts.LOT_IS_EXPIRED.not(), () => { return { canBeEvaluated: true }; } ],
-			[facts.DOSE_CONDITION_EXISTS.or(facts.LOT_IS_EXPIRED), () => { return { canBeEvaluated: false }; } ],
+			[facts.DOSE_CONDITION_EXISTS,
+				() => { return { canBeEvaluated: false }; } ],
+			[facts.LOT_IS_EXPIRED,
+				() => { return { canBeEvaluated: false }; } ],
+			[facts.DOSE_CONDITION_EXISTS.not(),
+				facts.LOT_IS_EXPIRED.not(), () => { return { canBeEvaluated: true }; } ],
+			[facts.DOSE_CONDITION_EXISTS.or(facts.LOT_IS_EXPIRED),
+				() => { return { canBeEvaluated: false }; } ],
 			[() => { return { canBeEvaluated : true } } ]
 		]);
 		
