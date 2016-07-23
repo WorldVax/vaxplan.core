@@ -35,7 +35,7 @@ export class Decision_VaccineDoseIntervalValid implements Decider.IDecision<IDec
 			DOSE_IS_FIRST_DOSE:
 				() => context.targetDoseNumber == Values.DOSE_NUMBER_1,
 			PREVIOUS_DOSE_STATUS_INVALID_AGE_OR_INTERVAL:
-				() => context.previousDoseStatus == Text.INVALID_AGE || context.previousDoseStatus == Text.INVALID_INTERVAL
+				() => [Text.INVALID_AGE, Text.INVALID_INTERVAL].some((status) => context.previousDoseStatus == status)
 		});
 		
 		var outcomes = {
@@ -59,9 +59,40 @@ export class Decision_VaccineDoseIntervalValid implements Decider.IDecision<IDec
 				facts.DOSE_IS_FIRST_DOSE.not,
 				outcomes.gracePeriod],
 			[facts.ADMINISTERED_ON_OR_AFTER_MINIMUM_INTERVAL,
-				outcomes.validInterval]
+				outcomes.validInterval],
+			// Should there be a default here? Is valid the right answer?
+			[outcomes.validInterval]
 		]);
 		
 		return rules.evaluate();
 	}	
+}
+
+
+export interface IDecisionContext_VaccineDoseIntervalAllowed {
+	administeredDate: Date;
+	intervalFromImmediatePreviousDose: Timing.IInterval;
+	intervalFromTargetDoseNumberInSeries: Timing.IInterval;
+	absoluteMinimumIntervalDate: Date;
+}
+
+export interface IDecisionOutcome_VaccineDoseIntervalAllowed {
+	doseIntervalIsAllowed: boolean;
+	evaluationReason? : string;
+}
+
+export class Decision_VaccineDoseIntervalAllowed implements Decider.IDecision<IDecisionContext_VaccineDoseIntervalAllowed, IDecisionOutcome_VaccineDoseIntervalAllowed> {
+	label = "Was the vaccine dose administered at allowable interval(s)?";
+    decide(context: IDecisionContext_VaccineDoseIntervalAllowed) {
+        var facts = ruleBuilder.facts({
+            ADMINISTERED_BEFORE_ABSOLUTE_MINIMUM_INTERVAL_DATE : () => context.administeredDate < context.absoluteMinimumIntervalDate
+        });
+
+        var rules = ruleBuilder.rules([
+            [facts.ADMINISTERED_BEFORE_ABSOLUTE_MINIMUM_INTERVAL_DATE, () => { return { doseIntervalIsAllowed : false, evaluationReason: Text.TOO_SOON }; }],
+			[() => { return { doseIntervalIsAllowed : true, evaluationReason: Text.ALLOWED_INTERVAL }; }]
+        ])
+
+        return rules.evaluate();
+    }
 }

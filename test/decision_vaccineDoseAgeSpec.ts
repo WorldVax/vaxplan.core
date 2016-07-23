@@ -2,8 +2,8 @@
 
 import Vaxplan = require("../lib/planner");
 
-describe("The Can Evaluate Administered Dose decision", () => {
-    it("should report false when...", () => {
+describe("The Vaccine Dose Age decision", () => {
+    xit("should report false when...", () => {
         var decision = new Vaxplan.Decision_VaccineDoseAgeValid();
         let context: Vaxplan.IDecisionContext_VaccineDoseAgeValid;
         context = {
@@ -21,7 +21,7 @@ describe("The Can Evaluate Administered Dose decision", () => {
         expect(result.doseAgeIsValid).toEqual(false);
     });
 
-    it("should report true when no rules are broken", () => {
+    xit("should report true when no rules are broken", () => {
         var decision = new Vaxplan.Decision_VaccineDoseAgeValid();
         let context: Vaxplan.IDecisionContext_VaccineDoseAgeValid;
         context = {

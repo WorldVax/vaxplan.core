@@ -3,7 +3,7 @@
 import Vaxplan = require("../lib/planner");
 
 describe("The Vaccine Dose Interval decision", () => {
-    it("should report false when...", () => {
+    xit("should report false when...", () => {
         var decision = new Vaxplan.Decision_VaccineDoseIntervalValid();
         let context: Vaxplan.IDecisionContext_VaccineDoseIntervalValid;
         context = {
@@ -23,7 +23,7 @@ describe("The Vaccine Dose Interval decision", () => {
         expect(result.doseIntervalIsValid).toEqual(false);
     });
 
-    it("should report true when no rules are broken", () => {
+    xit("should report true when no rules are broken", () => {
         var decision = new Vaxplan.Decision_VaccineDoseIntervalValid();
         let context: Vaxplan.IDecisionContext_VaccineDoseIntervalValid;
         context = {
