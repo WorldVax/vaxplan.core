@@ -6,7 +6,7 @@
   "repository": {
     "private": "false",
     "type": "git",
-    "url": "git://github.com/worldvax/vaxplan.core"
+    "url": "git://github.com/WorldVax/vaxplan.core"
   },
   "keywords": [
     "immunization",
@@ -23,10 +23,10 @@
     "typings": "typings",
     "coverage": "istanbul cover node_modules/jasmine/bin/jasmine.js test/**.js"
   },
-  "author": "Jeffrey A. Miller",
+  "author": "WorldVax.org",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xagronaut/vaxplan/issues"
+    "url": "https://github.com/WorldVax/vaxplan.core/issues"
   },
   "dependencies": {
     "moment": "^2.13.0",
