@@ -1,0 +1,1 @@
+{"version":3,"file":"supportData.js","sourceRoot":"","sources":["../../lib/supportData.ts"],"names":["SupportData","SupportData.constructor","SupportData.vaccineTypeIsDefinedLiveVirus"],"mappings":"AAAA;IAAAA;IAIAC,CAACA;IAHGD,mDAA6BA,GAA7BA,UAA8BA,WAAmBA;QAC7CE,MAAMA,CAACA,WAAWA,IAAIA,iBAAiBA,CAACA;IAC5CA,CAACA;IACLF,kBAACA;AAADA,CAACA,AAJD,IAIC;AAJD;6BAIC,CAAA"}
